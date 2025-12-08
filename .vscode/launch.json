@@ -1,0 +1,23 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "totvs_language_web_debug",
+			"request": "launch",
+			"name": "Smart Client Web Debug",
+			"program": "${command:AskForProgramName}",
+			"isMultiSession": true,
+			"enableTableSync": true
+		}
+	],
+	"lastPrograms": [
+		{
+			"label": "U_ImportaTitulos"
+		},
+		{
+			"label": "U_ZZLCreate"
+		}
+	],
+	"lastProgramExecuted": "<cancel>",
+	"lastProgramArguments": []
+}
