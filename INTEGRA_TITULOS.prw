@@ -79,24 +79,19 @@ Static Function ProcessaTitulo(cAliasQry)
 	Local lRet          := .T.
 	Local nId           := 0
 
-	// Pega os dados do registro atual
 	nId         := (cAliasQry)->ID
 	cCliente    := AllTrim((cAliasQry)->CLIENTE)
 	nValor      := (cAliasQry)->VALOR
 
-	// Converte data do vencimento (formato pode ser YYYY/MM/DD ou YYYY-MM-DD)
 	Local cDataVenc := AllTrim((cAliasQry)->VENCIMENTO)
 	If "/" $ cDataVenc
-		// Formato YYYY/MM/DD -> YYYYMMDD
 		dVencto := CToD(StrTran(cDataVenc, "/", ""))
 	ElseIf "-" $ cDataVenc .And. Len(cDataVenc) > 8
-		// Formato YYYY-MM-DD -> YYYYMMDD
 		dVencto := CToD(StrTran(cDataVenc, "-", ""))
 	ElseIf Len(cDataVenc) == 8
-		// Já está no formato YYYYMMDD
 		dVencto := SToD(cDataVenc)
 	Else
-		// Formato não reconhecido, usa data atual
+
 		dVencto := dDataBase
 	EndIf
 
@@ -139,7 +134,7 @@ Static Function ProcessaTitulo(cAliasQry)
 		cErroMsg := "Erro na inclusão do título " + cNumTit
 
 		If __lSX8
-			RollBackSX8()
+			RollBackSX8() 
 		EndIf
 
 
@@ -167,7 +162,6 @@ Static Function AtualizaFlag(nId, nFlag)
 	cUpdate += " SET FLAG = " + cValToChar(nFlag)
 	cUpdate += " WHERE ID = " + cValToChar(nId)
 
-	// Executa o UPDATE
 	If TCSqlExec(cUpdate) < 0
 		MsgAlert("Erro ao atualizar FLAG - ID: " + cValToChar(nId))
 		MsgAlert("Erro: " + TCSQLError())
@@ -185,14 +179,14 @@ Static Function GravaLog(cCliente, cTitulo, cStatus, cMensagem)
 
 		ZZC->ZZC_FILIAL  := xFilial("ZZC")
 		ZZC->ZZC_CLIENT := cCliente
-		ZZC->ZZC_TITULO  := cTitulo
+		ZZC->ZZC_TITULO  := cTitulo 
 		ZZC->ZZC_DATA    := dDataBase
 		ZZC->ZZC_STATUS  := cStatus
 		ZZC->ZZC_MSG     := Left(cMensagem, TamSX3("ZZC_MSG")[1])
 		MsUnlock()
 
 	Else
-		ConOut("Erro ao gravar log na tabela ZZC")
+		ConOut("erro ao gravar log na tabela ZZC")
 	EndIf
 
 Return
