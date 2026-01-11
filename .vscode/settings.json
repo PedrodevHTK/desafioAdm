@@ -1,4 +1,5 @@
 {
   "totvsLanguageServer.welcomePage": false,
-  "totvsLanguageServer.editor.linter.includes": "C:\\Users\\Helpdesk\\Include_Protheus"
+  "totvsLanguageServer.editor.linter.includes": "C:\\Users\\Helpdesk\\Include_Protheus",
+  "advpl.debug_multiThread": true
 }
